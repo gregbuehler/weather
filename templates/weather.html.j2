@@ -1,0 +1,13 @@
+{% extends "layout.html.j2" %}
+
+{% block title %}Weather - {{ weather.location }}{% endblock %}
+
+{% block body %}
+
+<a href="/">Home</a>
+
+<h1>{{ location['formatted'] }}</h1>
+
+<p>{{ weather.daily.summary }}</p>
+
+{% endblock %}

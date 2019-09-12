@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple/"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+flask = "*"
+opencage = "*"
+opentelemetry-api = {editable = true,path = "./../../open-telemetry/opentelemetry-python/opentelemetry-api"}
+opentelemetry-sdk = {editable = true,path = "./../../open-telemetry/opentelemetry-python/opentelemetry-sdk"}
+opentelemetry-ext-wsgi = {editable = true,path = "./../../open-telemetry/opentelemetry-python/ext/opentelemetry-ext-wsgi"}
+
+[dev-packages]
+pytest = "*"
+pylint = "*"

@@ -1,0 +1,21 @@
+{% extends "layout.html.j2" %}
+
+{% block title %} Minimal Flask Table {% endblock %}
+
+{% block body %}
+
+<h1>Welcome!</h1>
+
+<p>The Weather!</p>
+
+<form action="/weather" method="post">
+    <input type="text" name="query" id="query">
+    <input type="submit" value="submit">
+</form>
+
+<ol>
+    <li><a href="/weather/portland, or">Portland, OR</a></li>
+    <li><a href="/weather/seattle">Seattle</a></li>
+    <li><a href="/weather/new york, ny">New York</a></li>
+</ol>
+{% endblock %}
