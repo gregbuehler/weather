@@ -10,6 +10,8 @@ opencage = "*"
 opentelemetry-api = {editable = true,path = "./../../open-telemetry/opentelemetry-python/opentelemetry-api"}
 opentelemetry-sdk = {editable = true,path = "./../../open-telemetry/opentelemetry-python/opentelemetry-sdk"}
 opentelemetry-ext-wsgi = {editable = true,path = "./../../open-telemetry/opentelemetry-python/ext/opentelemetry-ext-wsgi"}
+jaeger-client = "*"
+flask-opentracing = "*"
 
 [dev-packages]
 pytest = "*"

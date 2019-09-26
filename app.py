@@ -1,17 +1,21 @@
 #!/usr/bin/env python
 
-import opentelemetry.ext.http_requests
-from opentelemetry import trace
-from opentelemetry.sdk.trace import Tracer
-from opentelemetry.ext.wsgi import OpenTelemetryMiddleware
-
 from flask import Flask, render_template, request
 from util import lookup
 
+from flask_opentracing import FlaskTracing
+from jaeger_client import Config
+
 app = Flask(__name__)
-trace.set_preferred_tracer_implementation(lambda _: Tracer())
-opentelemetry.ext.http_requests.enable(trace.tracer())
-app.wsgi_app = OpenTelemetryMiddleware(app.wsgi_app)
+jaeger_config = Config(config={
+    'sampler': { 'type': 'const', 'param': 1},
+    'logging': True,
+    'local_agent': {
+        'reporting_host': 'localhost'
+    }
+}, service_name='weather')
+jaeger_tracer = jaeger_config.initialize_tracer()
+tracing = FlaskTracing(jaeger_tracer, trace_all_requests=True, app=app)
 
 @app.route('/')
 def index():

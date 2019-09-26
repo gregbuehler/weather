@@ -21,11 +21,9 @@ def get_weather(lat, lng):
     try:
         r = requests.get(url)
         if r.status_code != 200:
-            print(r)
             raise Exception('Weather provider error')
 
         weather = r.json()
-        print(weather)
     except Exception as ex:
         raise ex
 
