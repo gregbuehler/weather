@@ -1,17 +1,8 @@
 #!/usr/bin/env python
-
-import opentelemetry.ext.http_requests
-from opentelemetry import trace
-from opentelemetry.sdk.trace import Tracer
-from opentelemetry.ext.wsgi import OpenTelemetryMiddleware
-
 from flask import Flask, render_template, request
 from util import lookup
 
 app = Flask(__name__)
-trace.set_preferred_tracer_implementation(lambda _: Tracer())
-opentelemetry.ext.http_requests.enable(trace.tracer())
-app.wsgi_app = OpenTelemetryMiddleware(app.wsgi_app)
 
 @app.route('/')
 def index():
